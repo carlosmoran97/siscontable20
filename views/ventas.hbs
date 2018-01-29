@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {{> bootstrap}}
+    <title>Ventas</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/agregarLineaDeVenta.js"></script>
+    <script src="js/asignarAccion.js"></script>
+  </head>
+  <body>
+    {{> nav}}
+    <br>
+    <h2>{{message}}</h2>
+      <form action="/ventas" method="post">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha">
+        <label for="num">No. de factura</label>
+        <input type="text" id="num" name="num" placeholder="No. de factura">
+        <br><br>
+        <label for="cantidad">Cantidad: </label>
+        <input id="cantidad" type="number" value="1" min="1">
+        <label for="producto">Producto: </label>
+        <select id="lista-productos"></select>
+        <input type="button" value="Agregar" onclick="agregarLineaDeVenta();">
+        <br><br>
+        <table id="tablaDeLineasDeVenta" border="1">
+          <thead>
+            <tr>
+              <th>Cantidad</th>
+              <th>Producto</th>
+              <th>Precio Unitario</th>
+              <th>Total de línea</th>
+            </tr>
+          </thead>
+        </table>
+        <br>
+        <label for="total">Total: </label>
+        <label id="total">$0.00</label><br><br>
+        <input type="hidden" id="lineasDeVenta" name="lineasDeVenta" value="">
+        <input type="submit" value="Guardar" onclick="asignarAccion('guardar');">
+        <input type="hidden" id="accion" name="accion" value="guardar">
+        <br>
+      </form>
+      <table id="tablaDeVentas" border="1">
+
+      </table>
+      <br>
+    {{> footer}}
+    <script src="js/fillList.js"></script>
+    {{> scripts}}
+  </body>
+</html>

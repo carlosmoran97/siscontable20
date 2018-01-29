@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {{> bootstrap}}
+    <title>Registro</title>
+    <script src="js/filtrarPorMes.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    {{> nav}}
+    <p>Ventas</p>
+    <p>
+      <label for="month">Mes </label>
+      <select id="month" name="month">
+        <option value="0">Enero</option>
+        <option value="1">Febrero</option>
+        <option value="2">Marzo</option>
+        <option value="3">Abril</option>
+        <option value="4">Mayo</option>
+        <option value="6">Junio</option>
+        <option value="6">Julio</option>
+        <option value="7">Agosto</option>
+        <option value="8">Septiembre</option>
+        <option value="9">Octubre</option>
+        <option value="10">Noviembre</option>
+        <option value="11">Diciembre</option>
+      </select>
+      <label for="year">Año </label>
+      <input type="number" id="year" name="year" value="{{year}}">
+      <input type="button" id="filtrar" value="Filtrar" onclick="filtrarPorMes();">
+    </p>
+    <table id="tabla-ventas" border="1">
+      <thead>
+        <tr>
+          <td>No.de factura</td>
+          <td>Fecha</td>
+          <td>Total</td>
+        </tr>
+      </thead>
+    </table>
+    <br>
+    {{> footer}}
+    {{> scripts}}
+  </body>
+</html>
